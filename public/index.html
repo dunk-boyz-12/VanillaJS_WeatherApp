@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+    <link type="text/css" href="../src/style/global.scss" rel="stylesheet">
+</head>
+<body>
+<div id="main_container">
+    <header id="header_container">
+        <div id="title_container">
+            <h1 id="header_container__title">Current Weather</h1>
+            <div id="header__conv__container">
+                <p class="header__letter active" id="faranheit">&deg;F</p>
+                <p class="header__letter" id="celsius">&deg;C</p>
+            </div>
+        </div>
+        <form id="form_search">
+            <input id="header__city" placeholder="Los Angeles, CA..."></input>
+        </form>
+        <div id="header_weather_display_container">
+            <h3 id="header_weather_display_title">Select Weather Forecast</h3>
+            <button class="forecast_select active" id="header_weather_display_current">Current</button>
+            <button class="forecast_select" id="header_weather_display_3day">3 Day</button>
+            <button class="forecast_select" id="header_weather_display_5day">5 Day</button>
+            <button class="forecast_select" id="header_weather_display_7day">7 Day</button>
+        </div>
+    </header>
+    <div class="weather_card_container"> 
+        <div class="weather_card">
+            <h2 class="weather_card__day">Mon</h2>
+            <h2 class="weather_card__month">Nov 11</h2>
+            <h4 class="weather_card__ltime">Local Time</h4>
+            <div class="weather_card__icon__container">
+                <ion-icon name="sunny" class="weather_card__icon"></ion-icon>
+            </div>
+            <div class="weather_card__info__container">
+                <p class="weather_card__current">sunny</p>
+                <p class="weather_card__item" id="tHigh">H 76 F</p>
+                <p class="weather_card__item" id="tLow">L 55 F</p>
+            </div>
+        </div>
+    </div>
+    <div id="my_cities">
+        <div id="my_cities__title">
+            <h2>My Cities</h2>
+            <ion-icon name="add-outline" class="add__icon"></ion-icon>
+        </div>
+        <ul id="my_cities__list">
+        </ul>
+    </div>
+    <footer id="footer">
+        <div id="footer__copy">Created by Nicholas Buras</div>
+        <div id="footer__github"><ion-icon name="logo-github"></ion-icon> dunk-boyz-12</div>
+    </footer>
+</div>
+    <script src="https://unpkg.com/ionicons@5.2.3/dist/ionicons.js"></script>
+    <script src="../src/index.js"></script>
+</body>
+</html>

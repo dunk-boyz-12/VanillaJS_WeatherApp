@@ -1,0 +1,41 @@
+@import "./variables.scss";
+@import "./partials/header";
+@import "./partials/weatherCard";
+@import "./partials/savedCities";
+
+* {
+  padding: 0;
+  margin: 0;
+}
+
+#main_container {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.weather_card_container {
+  height: 35vh;
+  width: 95vw;
+  display: flex;
+  justify-content: center;
+}
+
+#footer {
+  margin-top: 2%;
+  color: $text;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: "MainType";
+}
+
+#footer__copy {
+  font-size: 14px;
+}
+
+#footer__github {
+  font-size: 13px;
+}
