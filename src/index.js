@@ -7,10 +7,11 @@ const forecastStateContainer = document.getElementById("header_weather_display_c
 const citySearch= document.getElementById("form_search");
 const degreeContainer = document.getElementById("header__conv__container");
 const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
-const forecasts = [1,3,5,7];
-let forecastState = forecasts[0];
+const forecastAmt = [1,3,5,7];
+let forecastState = forecastAmt[0];
 let usingFaranheit = true;
 let days = [];
+let currentWeather;
 
 let weatherReport = {
     dayLetters: '',
@@ -60,7 +61,7 @@ const validateUserInput = () => {
 };
 
 const displayData = (data,fs) => {
-    const fc = new weatherInfo(data.location.name,
+    const forecastData = new weatherInfo(data.location.name,
                                 data.location.region,
                                 data.location.country,
                                 data.location.lat,
@@ -68,13 +69,13 @@ const displayData = (data,fs) => {
                                 data.location.localtime,
                                 data.forecast.forecastday,
                                 data.current);
-    console.log(fc);
-    //fix to push both forecast data & current data into days array
-    fc.weatherData.forEach(day => {
+    //collect current & forecast data, store in vars
+    forecastData.weatherData.forEach(day => {
         days.push(day);
     });
-    console.log(days);
-    //get forecast data depending on user selection
+    currentWeather = forecastData.currentWeatherData;
+    console.log(days,currentWeather);
+    //display forecast data depending on user selection of forecast length
     switch(fs) {
         case 1:      
             days.forEach(day => {
