@@ -1,25 +1,21 @@
 import { callApi } from './utility/callWeatherDB';
 import { degreeState, degreeConv } from './utility/degConv';
+import { weatherInfo } from './utility/weatherInfo'; 
 
 const dayContainer = document.querySelector(".weather_card_container");
 const forecastStateContainer = document.getElementById("header_weather_display_container");
 const citySearch= document.getElementById("form_search");
 const degreeContainer = document.getElementById("header__conv__container");
+const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
 const forecasts = [1,3,5,7];
 let forecastState = forecasts[0];
 let usingFaranheit = true;
-let city = 'Cypress';
-let weatherData = [];
+let days = [];
 
-let cityData = {
-    name: '',
-    region: '',
-    country: '',
-    lat: 0,
-    lon: 0,
-    localTime: '',
-};
-let currentWeather = {
+let weatherReport = {
+    dayLetters: '',
+    dayNum: 0,
+    month: '',
     tempF: 0,
     tempC: 0,
     feelsLikeF: 0,
@@ -51,14 +47,12 @@ forecastStateContainer.addEventListener('click', function(e) {
 
 //utility functions
 const newSearch = (e) => {
-    console.log(e.target[0].value);
+    //console.log(e.target[0].value);
     let city = e.target[0].value;
-
     //add regex for user input
     // here,, call function to check input 
     callApi(city,forecastState)
         .then(data => displayData(data,forecastState));
-        //.then(() => console.log(weatherData));
 };
 
 const validateUserInput = () => {
@@ -66,32 +60,45 @@ const validateUserInput = () => {
 };
 
 const displayData = (data,fs) => {
-    cityData.name = data.location.name;
-    cityData.region = data.location.region;
-    cityData.country = data.location.country;
-    cityData.lat = data.location.lat;
-    cityData.lon = data.location.lon;
-    cityData.localTime = data.location.localtime;
+    const fc = new weatherInfo(data.location.name,
+                                data.location.region,
+                                data.location.country,
+                                data.location.lat,
+                                data.location.lon,
+                                data.location.localtime,
+                                data.forecast.forecastday,
+                                data.current);
+    console.log(fc);
+    //fix to push both forecast data & current data into days array
+    fc.weatherData.forEach(day => {
+        days.push(day);
+    });
+    console.log(days);
     //get forecast data depending on user selection
     switch(fs) {
-        case 1: 
-            console.log(data.current);
-            
+        case 1:      
+            days.forEach(day => {
+                let d = day.date.split('-');
+                weatherReport.month = months[parseInt(d[1]-1)];
+                weatherReport.dayNum = d[2];
+                console.log(weatherReport);
+            });
             break;
         case 3: 
-            console.log(data.location);
+         
             break;
         case 5: 
-            console.log(data.location);
+            
             break;
         case 7: 
-            console.log(data.location);
+            
             break;
     }
+    
 };
 
 
-export { city,usingFaranheit };
+export { usingFaranheit };
 
 
 
@@ -107,14 +114,7 @@ export { city,usingFaranheit };
 
 
 
-/*function makeDay() {
-    this.dateDay = 'Monday',
-    this.dateMonth_Num = 'Nov 11',
-    this.icon = 'sunny',
-    this.condition = 'S U N N Y',
-    this.tHigh = 17,
-    this.tLow = 3
-};
+/*
 
 makeDay.prototype.createDay = function() {
     let card = document.createElement('div');
