@@ -6,17 +6,12 @@ const dayContainer = document.querySelector(".weather_card_container");
 const forecastStateContainer = document.getElementById("header_weather_display_container");
 const citySearch= document.getElementById("form_search");
 const degreeContainer = document.getElementById("header__conv__container");
-const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
-const forecastAmt = [1,3,5,7];
-let forecastState = forecastAmt[0];
+const forecastAmt = [1,3];
+let forecastState = forecastAmt[1];
 let usingFaranheit = true;
-let days = [];
-let currentWeather;
 
 let weatherReport = {
-    dayLetters: '',
-    dayNum: 0,
-    month: '',
+    date: [],
     tempF: 0,
     tempC: 0,
     feelsLikeF: 0,
@@ -25,6 +20,8 @@ let weatherReport = {
     condition: '',
     wSpeed: 0,
     wDir: '',
+    sunrise: 0,
+    sunset: 0
 };
 
 //event listeners
@@ -53,14 +50,14 @@ const newSearch = (e) => {
     //add regex for user input
     // here,, call function to check input 
     callApi(city,forecastState)
-        .then(data => displayData(data,forecastState));
+        .then(data => displayData(data));
 };
 
 const validateUserInput = () => {
 
 };
 
-const displayData = (data,fs) => {
+const displayData = (data) => {
     const forecastData = new weatherInfo(data.location.name,
                                 data.location.region,
                                 data.location.country,
@@ -69,33 +66,15 @@ const displayData = (data,fs) => {
                                 data.location.localtime,
                                 data.forecast.forecastday,
                                 data.current);
-    //collect current & forecast data, store in vars
-    forecastData.weatherData.forEach(day => {
-        days.push(day);
+    console.log(forecastData.weatherData);
+    //display formatted forecast data     
+    let formattedData = forecastData.weatherData.map(day => {
+        console.log(day.date);
+        let d = day.date.toString().split(' ');
+        //put weather report in here to push into array for each day
+        return d;
     });
-    currentWeather = forecastData.currentWeatherData;
-    console.log(days,currentWeather);
-    //display forecast data depending on user selection of forecast length
-    switch(fs) {
-        case 1:      
-            days.forEach(day => {
-                let d = day.date.split('-');
-                weatherReport.month = months[parseInt(d[1]-1)];
-                weatherReport.dayNum = d[2];
-                console.log(weatherReport);
-            });
-            break;
-        case 3: 
-         
-            break;
-        case 5: 
-            
-            break;
-        case 7: 
-            
-            break;
-    }
-    
+    console.log(formattedData);
 };
 
 
