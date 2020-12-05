@@ -1,6 +1,6 @@
 import { callApi } from './utility/callWeatherDB';
-import { degreeState, degreeConv } from './utility/degConv';
-import { weatherInfo } from './utility/weatherInfo'; 
+import { degreeConv } from './utility/degConv'; 
+import { WeatherCard } from './utility/weatherCard';
 
 const dayContainer = document.querySelector(".weather_card_container");
 const forecastStateContainer = document.getElementById("header_weather_display_container");
@@ -9,20 +9,7 @@ const degreeContainer = document.getElementById("header__conv__container");
 const forecastAmt = [1,3];
 let forecastState = forecastAmt[1];
 let usingFaranheit = true;
-
-let weatherReport = {
-    date: [],
-    tempF: 0,
-    tempC: 0,
-    feelsLikeF: 0,
-    feelsLikeC: 0,
-    humidity: 0,
-    condition: '',
-    wSpeed: 0,
-    wDir: '',
-    sunrise: 0,
-    sunset: 0
-};
+let weather;
 
 //event listeners
 citySearch.addEventListener('submit', function(e) {
@@ -50,31 +37,56 @@ const newSearch = (e) => {
     //add regex for user input
     // here,, call function to check input 
     callApi(city,forecastState)
-        .then(data => displayData(data));
+        .then(data => formatData(data))
+        .then(() => console.log(weather))
+        .then(() => displayData(weather));
 };
 
 const validateUserInput = () => {
 
 };
-
+//just for test, need to fix
 const displayData = (data) => {
-    const forecastData = new weatherInfo(data.location.name,
-                                data.location.region,
-                                data.location.country,
-                                data.location.lat,
-                                data.location.lon,
-                                data.location.localtime,
-                                data.forecast.forecastday,
-                                data.current);
-    console.log(forecastData.weatherData);
-    //display formatted forecast data     
-    let formattedData = forecastData.weatherData.map(day => {
-        console.log(day.date);
-        let d = day.date.toString().split(' ');
-        //put weather report in here to push into array for each day
-        return d;
+    let cards = data.Forecast.map(day => {
+        let card = document.createElement('p');
+        card.innerText = day.date;
+        return card;
     });
-    console.log(formattedData);
+    cards.forEach( c => dayContainer.appendChild(c));
+};
+
+const formatData = (data) => {
+    const forecastData = [...data.forecast.forecastday];
+    const currentData = data.current;
+    const weatherAlert = data.alert;
+    const cityData = { name: data.location.name,
+                    region: data.location.region, //state-province
+                    country: data.location.country,
+                    lat: data.location.lat,
+                    lon: data.location.lon,
+                    localtime: data.location.localtime };
+    //format forecast data into easier to work with variables   
+    const formattedData = forecastData.map(day => {
+        const weatherReport = {
+            date: day.date.split('-'),
+            avgTempF: day.day.avgtemp_f,
+            hTempF: day.day.maxtemp_f,
+            lTempF: day.day.mintemp_f,
+            humidity: day.day.avghumidity,
+            condition: day.day.condition.text,
+            vis: day.day.avgvis_miles,
+            sunrise: day.astro.sunrise,
+            sunset: day.astro.sunset,
+            hourly: [...day.hour]
+        };
+        return weatherReport;
+    });
+    //store in easier to work with key/value pairs
+    weather = { CityData: cityData, 
+                Alert: weatherAlert, 
+                Current: currentData, 
+                Forecast: [...formattedData] };
+    //console.log(weather);
 };
 
 
