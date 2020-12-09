@@ -1,4 +1,4 @@
-#header_container {
+#header {
   width: 100vw;
   display: flex;
   flex-direction: column;
@@ -8,11 +8,11 @@
   color: $text;
 }
 
-#header_container__title {
+#header__title {
   font-size: 1.5rem;
 }
 
-#title_container {
+#title-container {
   width: 100%;
   padding-top: 3%;
   display: flex;
@@ -20,7 +20,7 @@
   justify-content: center;
 }
 
-#header__city {
+#header-city {
   font-family: "MainType";
   text-align: center;
   font-size: 3.5em;
@@ -28,7 +28,7 @@
   color: red;
 }
 
-#header__conv__container {
+#header-conv-container {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -51,7 +51,7 @@
   transform: scale(0.8);
 }
 
-#header_weather_display_container {
+#header-weather-display-container {
   padding: 15px 0 0 0;
   width: 75%;
   display: flex;
@@ -60,11 +60,11 @@
   font-size: 1rem;
 }
 
-#header_weather_display_title {
+#header-weather-display__title {
   font-size: 1rem;
 }
 
-.forecast_select {
+.forecast-select {
   padding: 0 10px 0 10px;
   background: none;
   border: none;

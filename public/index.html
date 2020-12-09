@@ -3,47 +3,79 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Weather App</title>
+    <title>Weather App - By Nicholas Buras</title>
     <link type="text/css" href="../src/style/global.scss" rel="stylesheet">
 </head>
 <body>
-<div id="main_container">
-    <header id="header_container">
-        <div id="title_container">
-            <h1 id="header_container__title">Current Weather</h1>
-            <div id="header__conv__container">
+<div id="main-container">
+    <header id="header">
+        <div id="title-container">
+            <h1 id="header__title">Current Weather</h1>
+            <div id="header-conv-container">
                 <p class="header__letter active" id="faranheit">&deg;F</p>
                 <p class="header__letter" id="celsius">&deg;C</p>
             </div>
         </div>
-        <form id="form_search">
-            <input id="header__city" placeholder="Los Angeles, CA..."></input>
+        <form id="form-search">
+            <input id="header-city" placeholder="Los Angeles, CA..."></input>
         </form>
-        <div id="header_weather_display_container">
-            <h3 id="header_weather_display_title">Select Weather Forecast</h3>
-            <button class="forecast_select active" id="header_weather_display_current">Current</button>
-            <button class="forecast_select" id="header_weather_display_3day">3 Day Forecast</button>
+        <div id="header-weather-display-container">
+            <h3 id="header-weather-display__title">Select Weather Forecast</h3>
+            <button class="forecast-select active" id="header-weather-display__current">Current</button>
+            <button class="forecast-select" id="header-weather-display__3day">3 Day Forecast</button>
         </div>
     </header>
-    <div class="weather_card_container"> 
-        <div class="weather_card">
-            <h2 class="weather_card__day">Mon</h2>
-            <h2 class="weather_card__month">Nov 11</h2>
-            <h4 class="weather_card__ltime">Local Time</h4>
-            <div class="weather_card__icon__container">
-                <ion-icon name="sunny" class="weather_card__icon"></ion-icon>
+    <div class="weather-card-container"> 
+        <div class="weather-card">
+            <h2 class="weather-card__day">Mon</h2>
+            <h2 class="weather-card__month">Nov 11</h2>
+            <h4 class="weather-card__ltime">Local Time</h4>
+            <div class="weather-card__icon-container">
+                <ion-icon name="sunny" class="weather-card__icon"></ion-icon>
             </div>
-            <div class="weather_card__info__container">
+            <div class="weather-card-info-container">
                 <p class="weather_card__current">sunny</p>
-                <p class="weather_card__item" id="tHigh">H 76 F</p>
-                <p class="weather_card__item" id="tLow">L 55 F</p>
+                <p class="weather_card__temp" id="tHigh">H 76 F</p>
+                <p class="weather_card__temp" id="tLow">L 55 F</p>
+            </div>
+            <div>
+                <button>Expand</button>
+            </div>
+        </div>
+        <div class="weather-card disabled">
+            <h2 class="weather-card__day">Mon</h2>
+            <h2 class="weather-card__month">Nov 11</h2>
+            <h4 class="weather-card__ltime">Local Time</h4>
+            <div class="weather-card__icon-container">
+                <ion-icon name="sunny" class="weather-card__icon"></ion-icon>
+            </div>
+            <div class="weather-card-info-container">
+                <p class="weather_card__current">sunny</p>
+                <p class="weather_card__temp" id="tHigh">H 76 F</p>
+                <p class="weather_card__temp" id="tLow">L 55 F</p>
+            </div>
+            <div>
+                <button>Expand</button>
+            </div>
+        </div>
+        <div class="weather-card disabled">
+            <h2 class="weather-card__day">Mon</h2>
+            <h2 class="weather-card__month">Nov 11</h2>
+            <h4 class="weather-card__ltime">Local Time</h4>
+            <div class="weather-card__icon-container">
+                <ion-icon name="sunny" class="weather-card__icon"></ion-icon>
+            </div>
+            <div class="weather-card-info-container">
+                <p class="weather_card__current">sunny</p>
+                <p class="weather_card__temp" id="tHigh">H 76 F</p>
+                <p class="weather_card__temp" id="tLow">L 55 F</p>
             </div>
             <div>
                 <button>Expand</button>
             </div>
         </div>
     </div>
-    <div id="my_cities">
+    <div id="my-cities">
         hourly slider
     </div>
     <footer id="footer">

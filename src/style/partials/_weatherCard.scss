@@ -1,4 +1,4 @@
-.weather_card {
+.weather-card {
   width: 18%;
   height: 100%;
   //border: 1px $text solid;
@@ -11,36 +11,40 @@
   justify-content: center;
 }
 
-.weather_card__day,
-.weather_card__month {
+.weather-card__day,
+.weather-card__month {
   font-size: 1.5rem;
 }
 
-.weather_card__ltime {
+.weather-card__ltime {
   font-size: 0.8rem;
   padding: 3px 0 3px 0;
 }
 
-.weather_card__current {
+.weather-card__current {
   margin-top: 2%;
   font-size: 1.3rem;
   opacity: 0.5;
   font-family: "MainType";
 }
 
-.weather_card__icon__container {
+.weather-card__icon-container {
   margin-top: 5%;
 }
 
-.weather_card__icon {
+.weather-card__icon {
   font-size: 64px;
 }
 
-.weather_card__temp {
+.weather-card__temp {
   font-family: "MainType";
 }
 
-.weather_card__item {
+.weather-card__item {
   font-size: 1rem;
   margin: 5% 0 0 0;
+}
+
+.disabled {
+  display: none;
 }
