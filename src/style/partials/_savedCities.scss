@@ -1,5 +1,18 @@
 #my-cities {
   width: 90%;
   font-family: "mainType";
-  color: $text;
+  padding-bottom: 25px;
+}
+
+#my-cities__list {
+  min-height: 50px;
+  border-top: black solid 1px;
+  border-bottom: black solid 1px;
+}
+
+.my-cities__placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
 }

@@ -1,14 +1,25 @@
+//type-faces
 @font-face {
   font-family: "MainType";
   src: url("../../public/fonts/Montserrat-Light.ttf");
 }
 
-$blue: #1c62f2;
-$yellow: #ffde25;
-$red: #ff0000;
-$lightGrey: #c4c3c4;
-$darkGrey: #787778;
-$grey: #a6a4a6;
-$cream: #fffff0;
-$bg: #fffaf0;
-$text: black;
+//screens, mobile-first
+$screen-tablet-min: 760px;
+$screen-desktop-min: 1024px;
+
+//mix-ins
+@mixin md {
+  @media (min-width: #{$screen-tablet-min}) {
+    @content;
+  }
+}
+
+@mixin lg {
+  @media (min-width: #{$screen-desktop-min}) {
+    @content;
+  }
+}
+
+//colors
+$blue: #1d2951;

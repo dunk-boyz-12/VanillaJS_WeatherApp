@@ -9,74 +9,55 @@
 <body>
 <div id="main-container">
     <header id="header">
-        <div id="title-container">
-            <h1 id="header__title">Current Weather</h1>
-            <div id="header-conv-container">
-                <p class="header__letter active" id="faranheit">&deg;F</p>
-                <p class="header__letter" id="celsius">&deg;C</p>
-            </div>
-        </div>
         <form id="form-search">
             <input id="header-city" placeholder="Los Angeles, CA..."></input>
         </form>
-        <div id="header-weather-display-container">
-            <h3 id="header-weather-display__title">Select Weather Forecast</h3>
-            <button class="forecast-select active" id="header-weather-display__current">Current</button>
-            <button class="forecast-select" id="header-weather-display__3day">3 Day Forecast</button>
-        </div>
+        <span id="header__conv-container">
+            <p class="conv-container__letter active" id="faranheit">&deg;F</p>
+            <p class="conv-container__letter" id="celsius">&deg;C</p>
+        </span>
     </header>
     <div class="weather-card-container"> 
         <div class="weather-card">
-            <h2 class="weather-card__day">Mon</h2>
-            <h2 class="weather-card__month">Nov 11</h2>
-            <h4 class="weather-card__ltime">Local Time</h4>
-            <div class="weather-card__icon-container">
-                <ion-icon name="sunny" class="weather-card__icon"></ion-icon>
+            <h2 class="weather-card__day" id="weekday">Monday, It's Sunny</h2>
+            <div class="weather-card__feels-like-container">
+                <p class="weather-card__feels-like">Feels Like</p>
+                <p class="weather-card__feels-like__num" id="feels-like">--</p>
             </div>
-            <div class="weather-card-info-container">
-                <p class="weather_card__current">sunny</p>
-                <p class="weather_card__temp" id="tHigh">H 76 F</p>
-                <p class="weather_card__temp" id="tLow">L 55 F</p>
-            </div>
-            <div>
-                <button>Expand</button>
-            </div>
-        </div>
-        <div class="weather-card disabled">
-            <h2 class="weather-card__day">Mon</h2>
-            <h2 class="weather-card__month">Nov 11</h2>
-            <h4 class="weather-card__ltime">Local Time</h4>
-            <div class="weather-card__icon-container">
-                <ion-icon name="sunny" class="weather-card__icon"></ion-icon>
-            </div>
-            <div class="weather-card-info-container">
-                <p class="weather_card__current">sunny</p>
-                <p class="weather_card__temp" id="tHigh">H 76 F</p>
-                <p class="weather_card__temp" id="tLow">L 55 F</p>
-            </div>
-            <div>
-                <button>Expand</button>
-            </div>
-        </div>
-        <div class="weather-card disabled">
-            <h2 class="weather-card__day">Mon</h2>
-            <h2 class="weather-card__month">Nov 11</h2>
-            <h4 class="weather-card__ltime">Local Time</h4>
-            <div class="weather-card__icon-container">
-                <ion-icon name="sunny" class="weather-card__icon"></ion-icon>
-            </div>
-            <div class="weather-card-info-container">
-                <p class="weather_card__current">sunny</p>
-                <p class="weather_card__temp" id="tHigh">H 76 F</p>
-                <p class="weather_card__temp" id="tLow">L 55 F</p>
-            </div>
-            <div>
-                <button>Expand</button>
+            <div class="weather-card__info-container">
+                <div class="flex-container">
+                <ion-icon name="thermometer-outline"></ion-icon>
+                <p class="weather-card__temp" id="curr"> --</p>
+                </div>
+                <div class="flex-container">
+                    <ion-icon name="caret-up-outline"></ion-icon>
+                    <p class="weather-card__temp" id="tHigh"> -- F</p>
+                </div>
+                <div class="flex-container">
+                    <ion-icon name="caret-down-outline"></ion-icon>
+                    <p class="weather-card__temp" id="tLow"> -- F</p>
+                </div>
+                <div class="flex-container">
+                    <ion-icon name="sunny-outline"></ion-icon>
+                    <p class="weather-card__temp" id="tHigh"> --</p>
+                </div>
+                <div class="flex-container">
+                    <ion-icon name="moon-outline"></ion-icon>
+                    <p class="weather-card__temp" id="tHigh"> --</p>
+                </div>
+                <div class="flex-container">
+                    <ion-icon name="rainy-outline"></ion-icon>
+                    <p class="weather-card__temp" id="humidity"> --in</p>
+                </div>
             </div>
         </div>
     </div>
     <div id="my-cities">
-        hourly slider
+        <h3>My Cities <ion-icon name="map-outline"></ion-icon></h3>
+        <button></button>
+        <ul id="my-cities__list">
+            <div class="my-cities__placeholder">Add Cities...</div>
+        </ul>
     </div>
     <footer id="footer">
         <div id="footer__copy">Created by Nicholas Buras</div>

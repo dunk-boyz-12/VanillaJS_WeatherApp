@@ -2,33 +2,32 @@ import { callApi } from './utility/callWeatherDB';
 import { degreeConv } from './utility/degConv'; 
 import { WeatherCard } from './utility/weatherCard';
 
-const cards = document.querySelectorAll(".weather-card");
-const forecastStateContainer = document.getElementById("header-weather-display-container");
+//dom elements
+const weekday = document.getElementById("weekday");
 const citySearch= document.getElementById("form-search");
-const degreeContainer = document.getElementById("header-conv-container");
-const forecastAmt = [1,3];
-let forecastState = forecastAmt[1];
+const degreeContainer = document.getElementById("header__conv-container");
+const cityList = document.getElementById("my-cities__list");
+const feelsLike = document.getElementById("feels-like");
+const currTemp = document.getElementById("curr");
+const tHigh = document.getElementById("tHigh");
+const tLow = document.getElementById("tLow");
+
+//program vars
+const daysOfWeek = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
 let usingFaranheit = true;
-let weather; //will hold weather data returned from api after formatting
+//let weather; //will hold weather data returned from api after formatting
 
-//event listeners
-citySearch.addEventListener('submit', function(e) {
-    e.preventDefault();
-    newSearch(e);
-});
 
-degreeContainer.addEventListener('click', function(e) {
-    degreeConv(e);
-    if (e.target.id === 'celsius') {
-        usingFaranheit = false;
-    } else {
-        usingFaranheit = true;
-    };
-});
+const date = new Date();
+const today = daysOfWeek[date.getDay()];
+weekday.innerText = `${today}, Its Sunny`;
 
-forecastStateContainer.addEventListener('click', function(e) {
-    console.log(e.target);
-});
+console.log(cityList);
+
+if(cityList.childElementCount === 0) {
+    console.log("hey");
+}
+
 
 //utility functions
 const newSearch = (e) => {
@@ -36,9 +35,9 @@ const newSearch = (e) => {
     let city = e.target[0].value;
     //add regex for user input
     // here,, call function to check input 
-    callApi(city,forecastState)
+    callApi(city,3)
         .then(data => formatData(data))
-        .then(() => displayData(weather));
+        .then((weather) => displayData(weather));
 };
 
 const validateUserInput = () => {
@@ -48,6 +47,12 @@ const validateUserInput = () => {
 const displayData = (data) => {
     //cards has weather cards stored in it to add data to and cycle
     console.log(data);
+    const curr = data.Current;
+    const fc = data.Forecast[0];
+    feelsLike.innerText = curr.feelslike_f;
+    currTemp.innerText = curr.temp_f;
+    tHigh.innerText = fc.hTempF;
+    tLow.innerText = fc.lTempF;
 };
 
 const formatData = (data) => {
@@ -77,12 +82,23 @@ const formatData = (data) => {
         return weatherReport;
     });
     //store in easier to work with key/value pairs
-    weather = { CityData: cityData, 
+    const weather = { CityData: cityData, 
                 Alert: weatherAlert, 
                 Current: currentData, 
                 Forecast: [...formattedData] };
-
+    return weather;
 };
+
+//event listeners
+citySearch.addEventListener('submit', function(e) {
+    e.preventDefault();
+    newSearch(e);
+});
+
+degreeContainer.addEventListener('click', function(e) {
+    degreeConv(e);
+    usingFaranheit = !usingFaranheit;
+});
 
 
 export { usingFaranheit };
