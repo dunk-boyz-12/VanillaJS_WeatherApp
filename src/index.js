@@ -52,9 +52,9 @@ const displayData = () => {
         w[0] = w[0].toUpperCase();
         return w.join('');
     }).join(' ');
-    //console.log(cond);
+
     weekday.innerText = `${today}, It's ${cond}`;
-    //console.log(data);
+
     if(usingFaranheit) {
         feelsLike.innerText = curr.feelslike_f;
         currTemp.innerText = `${curr.temp_f} F`;
