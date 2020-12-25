@@ -13,11 +13,13 @@
   width: 100%;
   display: flex;
   justify-content: center;
+  align-items: center;
 }
 
 #form-search > input {
-  width: 95%;
-  font-size: 1.8em;
+  width: 90%;
+  font-size: 1.3em;
+  border-bottom: 1px solid black;
 }
 
 #header-city {
@@ -38,9 +40,14 @@
 }
 
 .conv-container__letter {
+  cursor: pointer;
   padding: 0 10px 0 10px;
   transition: transform 0.6s;
   font-size: 0.8em;
+}
+
+.conv-container__letter :hover {
+  transform: scale(1em);
 }
 
 .active {

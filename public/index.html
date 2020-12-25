@@ -7,6 +7,12 @@
     <link type="text/css" href="../src/style/global.scss" rel="stylesheet">
 </head>
 <body>
+<div id="add-city-overlay" class="closed">
+    <h2 id="add-city-overlay__title">Add City</h2>
+    <form id="add-city-search">
+        <input id="add-city-input" placeholder="Los Angeles, CA..."></input> 
+    </form>
+</div>
 <div id="main-container">
     <header id="header">
         <form id="form-search">
@@ -19,44 +25,46 @@
     </header>
     <div class="weather-card-container"> 
         <div class="weather-card">
-            <h2 class="weather-card__day" id="weekday">Monday, It's Sunny</h2>
+            <h2 class="weather-card__day" id="weekday">--</h2>
             <div class="weather-card__feels-like-container">
                 <p class="weather-card__feels-like">Feels Like</p>
                 <p class="weather-card__feels-like__num" id="feels-like">--</p>
             </div>
             <div class="weather-card__info-container">
                 <div class="flex-container">
-                <ion-icon name="thermometer-outline"></ion-icon>
+                <ion-icon name="thermometer-outline" class="icon"></ion-icon>
                 <p class="weather-card__temp" id="curr"> --</p>
                 </div>
                 <div class="flex-container">
-                    <ion-icon name="caret-up-outline"></ion-icon>
+                    <ion-icon name="caret-up-outline" class="icon"></ion-icon>
                     <p class="weather-card__temp" id="tHigh"> -- F</p>
                 </div>
                 <div class="flex-container">
-                    <ion-icon name="caret-down-outline"></ion-icon>
+                    <ion-icon name="caret-down-outline" class="icon"></ion-icon>
                     <p class="weather-card__temp" id="tLow"> -- F</p>
                 </div>
                 <div class="flex-container">
-                    <ion-icon name="sunny-outline"></ion-icon>
-                    <p class="weather-card__temp" id="tHigh"> --</p>
+                    <ion-icon name="sunny-outline" class="icon"></ion-icon>
+                    <p class="weather-card__temp" id="sunrise"> --</p>
                 </div>
                 <div class="flex-container">
-                    <ion-icon name="moon-outline"></ion-icon>
-                    <p class="weather-card__temp" id="tHigh"> --</p>
+                    <ion-icon name="moon-outline" class="icon"></ion-icon>
+                    <p class="weather-card__temp" id="sunset"> --</p>
                 </div>
                 <div class="flex-container">
-                    <ion-icon name="rainy-outline"></ion-icon>
-                    <p class="weather-card__temp" id="humidity"> --in</p>
+                    <ion-icon name="rainy-outline" class="icon"></ion-icon>
+                    <p class="weather-card__temp" id="rain"> --in</p>
                 </div>
             </div>
         </div>
     </div>
     <div id="my-cities">
-        <h3>My Cities <ion-icon name="map-outline"></ion-icon></h3>
-        <button></button>
+        <div id="my-cities__info">
+            <h3 id="my-cities__title">My Cities <ion-icon name="map-outline"></ion-icon></h3>
+            <button id="my-cities__btn"><ion-icon name="add-outline"></ion-icon></button>
+        </div>
         <ul id="my-cities__list">
-            <div class="my-cities__placeholder">Add Cities...</div>
+            <div id="my-cities__placeholder">Add Cities...</div>
         </ul>
     </div>
     <footer id="footer">
