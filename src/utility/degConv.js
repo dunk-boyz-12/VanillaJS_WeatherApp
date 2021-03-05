@@ -10,6 +10,7 @@ function degreeConv(e) {
         n2.className = 'conv-container__letter active';
         n1.className = 'conv-container__letter';
     };
+    return e.target.id;
 };
 
 export { degreeConv };

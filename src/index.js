@@ -30,14 +30,14 @@ window.onload = function init() {
 
 //utility functions
 const newSearch = (city) => {
-    //add regex for user input
-    // here,, call function to check input 
-    const d = callApi(city,3);
+    let fCity = validateUserInput(city)
+    console.log(fCity)
+    const d = callApi(fCity,3);
     return d;
 };
 
-const validateUserInput = () => {
-
+const validateUserInput = (cName) => {
+    return cName.toString()
 };
 
 //just for test, need to fix
@@ -143,12 +143,14 @@ citySearch.addEventListener('submit', e => {
 });
 
 degreeContainer.addEventListener('click', e => {
-    degreeConv(e);
-    if(weather) {
-        usingFaranheit = !usingFaranheit;
-        displayData(weather);
+    let deg = degreeConv(e);
+    if(deg === 'faranheit') {
+        usingFaranheit = true;
     } else {
-        usingFaranheit = !usingFaranheit;
+        usingFaranheit = false;
+    }
+    if(weather) {
+        displayData(weather);
     }
 });
 
